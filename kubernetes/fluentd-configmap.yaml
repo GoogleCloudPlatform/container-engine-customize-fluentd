@@ -327,6 +327,14 @@ data:
     # cri container runtime rolls out.
     <source>
       @type systemd
+      filters [{ "_SYSTEMD_UNIT": "sshd.service" }]
+      pos_file /var/log/sshd.pos
+      read_from_head true
+      tag sshd
+    </source>
+
+    <source>
+      @type systemd
       filters [{ "_SYSTEMD_UNIT": "docker.service" }]
       pos_file /var/log/gcp-journald-docker.pos
       read_from_head true
